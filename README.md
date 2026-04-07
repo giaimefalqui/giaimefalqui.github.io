@@ -1006,4 +1006,4 @@
   document.querySelectorAll('.lang-grid').forEach(el => langObserver.observe(el));
 </script>
 </body>
-</html>
+</html> 
