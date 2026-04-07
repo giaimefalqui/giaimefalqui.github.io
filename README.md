@@ -8,13 +8,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --bg: #080808;
-    --bg2: #0f0f0f;
-    --surface: #141414;
-    --border: rgba(255,255,255,0.07);
-    --accent: #FF4D00;
-    --accent2: #ff7a3d;
-    --text: #e8e8e8;
+    --bg: #ffffff;
+    --bg2: #ffffff;
+    --surface: #329187;
+    --border: #329187;
+    --accent: #329187;
+    --accent2: rgb(0, 0, 0);
+    --text: #000000;
     --muted: #666;
     --faint: rgba(255,255,255,0.04);
   }
