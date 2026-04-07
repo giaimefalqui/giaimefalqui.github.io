@@ -9,15 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --bg: #ffffff;
-    --bg2: #f8f9fa;
-    --surface: #f1f3f5;
-    --border: rgba(0,0,0,0.1);
-    --accent: #e64a00;
-    --accent2: #cc3d00;
-    --text: #212529;
-    --muted: #6c757d;
-    --faint: rgba(0,0,0,0.03);
+    --bg: #080808;
+    --bg2: #0f0f0f;
+    --surface: #141414;
+    --border: rgba(255,255,255,0.07);
+    --accent: #FF4D00;
+    --accent2: #ff7a3d;
+    --text: #e8e8e8;
+    --muted: #666;
+    --faint: rgba(255,255,255,0.04);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,7 +28,7 @@
     background: var(--bg);
     color: var(--text);
     font-family: 'JetBrains Mono', monospace;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 14px;
     line-height: 1.7;
     overflow-x: hidden;
@@ -42,7 +42,7 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 999;
-    opacity: 0.4;
+    opacity: 0.6;
   }
 
   /* ─── NAV ─── */
@@ -55,7 +55,7 @@
     justify-content: space-between;
     padding: 1.4rem 4rem;
     border-bottom: 1px solid var(--border);
-    background: rgba(255,255,255,0.85);
+    background: rgba(8,8,8,0.85);
     backdrop-filter: blur(12px);
   }
 
@@ -77,7 +77,6 @@
     font-size: 0.72rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    font-weight: 500;
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--text); }
@@ -99,8 +98,8 @@
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+      linear-gradient(rgba(255,77,0,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,77,0,0.04) 1px, transparent 1px);
     background-size: 60px 60px;
     pointer-events: none;
   }
@@ -120,7 +119,6 @@
     font-size: 0.68rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    font-weight: 500;
     color: var(--accent);
     margin-bottom: 2rem;
   }
@@ -137,7 +135,7 @@
     font-size: clamp(3rem, 5vw, 5.5rem);
     line-height: 0.95;
     letter-spacing: -0.02em;
-    color: var(--text);
+    color: #fff;
     margin-bottom: 2rem;
   }
   h1 em {
@@ -162,7 +160,6 @@
     text-decoration: none;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
-    font-weight: 500;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     padding: 0.75rem 1.6rem;
@@ -210,7 +207,7 @@
     font-family: 'Syne', sans-serif;
     font-size: 2.2rem;
     font-weight: 800;
-    color: var(--text);
+    color: #fff;
     line-height: 1;
     margin-bottom: 0.4rem;
   }
@@ -219,7 +216,6 @@
     font-size: 0.65rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    font-weight: 500;
     color: var(--muted);
   }
 
@@ -237,13 +233,13 @@
     background: var(--faint);
     transition: border-color 0.2s, background 0.2s;
   }
-  .award-item:hover { border-color: var(--accent); background: rgba(230,74,0,0.05); }
+  .award-item:hover { border-color: var(--accent); background: rgba(255,77,0,0.05); }
   .award-icon {
     font-size: 1.2rem;
     flex-shrink: 0;
   }
   .award-text { font-size: 0.68rem; line-height: 1.5; color: var(--muted); }
-  .award-text strong { color: var(--text); font-weight: 600; display: block; margin-bottom: 0.1rem; }
+  .award-text strong { color: var(--text); display: block; margin-bottom: 0.1rem; }
 
   /* ─── TICKER ─── */
   .ticker-wrap {
@@ -261,7 +257,6 @@
   }
   .ticker-item {
     font-size: 0.65rem;
-    font-weight: 500;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--muted);
@@ -294,7 +289,6 @@
   }
   .section-num {
     font-size: 0.65rem;
-    font-weight: 600;
     color: var(--accent);
     letter-spacing: 0.2em;
   }
@@ -302,7 +296,7 @@
     font-family: 'Syne', sans-serif;
     font-weight: 800;
     font-size: clamp(1.8rem, 3vw, 2.8rem);
-    color: var(--text);
+    color: #fff;
     letter-spacing: -0.02em;
   }
   .section-line {
@@ -326,7 +320,7 @@
     line-height: 2;
     margin-bottom: 1.2rem;
   }
-  .about-text p strong { color: var(--text); font-weight: 600; }
+  .about-text p strong { color: var(--text); font-weight: 500; }
 
   .about-meta { display: flex; flex-direction: column; gap: 1rem; }
   .meta-row {
@@ -336,8 +330,8 @@
     border-bottom: 1px solid var(--border);
     font-size: 0.72rem;
   }
-  .meta-key { color: var(--muted); text-transform: uppercase; font-weight: 500; letter-spacing: 0.1em; font-size: 0.65rem; }
-  .meta-val { color: var(--text); font-weight: 500; text-align: right; }
+  .meta-key { color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.65rem; }
+  .meta-val { color: var(--text); text-align: right; }
 
   /* ─── SKILLS ─── */
   #skills .skills-grid {
@@ -355,7 +349,6 @@
   .skill-cat:hover { background: var(--surface); }
   .skill-cat-title {
     font-size: 0.62rem;
-    font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--accent);
@@ -367,11 +360,10 @@
     padding: 0.35rem 0.75rem;
     border: 1px solid var(--border);
     color: var(--text);
-    font-weight: 500;
     letter-spacing: 0.05em;
-    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    transition: border-color 0.2s, color 0.2s;
   }
-  .tag:hover { border-color: var(--accent); color: var(--accent); background: rgba(230,74,0,0.03); }
+  .tag:hover { border-color: var(--accent); color: var(--accent); }
 
   /* ─── EXPERIENCE ─── */
   #experience .exp-list { display: flex; flex-direction: column; gap: 0; }
@@ -402,19 +394,18 @@
     padding-top: 0.3rem;
     line-height: 1.8;
   }
-  .exp-date strong { color: var(--accent); display: block; font-weight: 600; font-size: 0.7rem; margin-bottom: 0.3rem; }
+  .exp-date strong { color: var(--accent); display: block; font-size: 0.7rem; margin-bottom: 0.3rem; }
 
   .exp-content {}
   .exp-role {
     font-family: 'Syne', sans-serif;
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--text);
+    color: #fff;
     margin-bottom: 0.3rem;
   }
   .exp-company {
     font-size: 0.7rem;
-    font-weight: 600;
     color: var(--accent);
     letter-spacing: 0.08em;
     margin-bottom: 1rem;
@@ -433,16 +424,13 @@
     position: absolute;
     left: 0;
     color: var(--accent);
-    font-weight: 600;
     font-size: 0.65rem;
   }
   .exp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
   .exp-tag {
     font-size: 0.6rem;
-    font-weight: 500;
     padding: 0.2rem 0.6rem;
     border: 1px solid var(--border);
-    background: var(--surface);
     color: var(--muted);
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -471,13 +459,12 @@
     font-family: 'Syne', sans-serif;
     font-size: 6rem;
     font-weight: 800;
-    color: rgba(0,0,0,0.04);
+    color: rgba(255,255,255,0.03);
     line-height: 1;
     pointer-events: none;
   }
   .edu-period {
     font-size: 0.62rem;
-    font-weight: 600;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--accent);
@@ -487,19 +474,18 @@
     font-family: 'Syne', sans-serif;
     font-size: 1.2rem;
     font-weight: 700;
-    color: var(--text);
+    color: #fff;
     margin-bottom: 0.4rem;
     line-height: 1.3;
   }
   .edu-uni {
     font-size: 0.72rem;
-    font-weight: 500;
     color: var(--muted);
     margin-bottom: 1.5rem;
   }
   .edu-details { display: flex; flex-direction: column; gap: 0.4rem; }
   .edu-detail { font-size: 0.7rem; color: var(--muted); }
-  .edu-detail strong { color: var(--text); font-weight: 600; }
+  .edu-detail strong { color: var(--text); }
 
   /* ─── LANGUAGES ─── */
   #languages .lang-grid {
@@ -519,12 +505,11 @@
     font-family: 'Syne', sans-serif;
     font-size: 1.4rem;
     font-weight: 800;
-    color: var(--text);
+    color: #fff;
     margin-bottom: 0.5rem;
   }
   .lang-level {
     font-size: 0.65rem;
-    font-weight: 600;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--accent);
@@ -543,7 +528,7 @@
     transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
     width: 0;
   }
-  .lang-cert { font-size: 0.65rem; color: var(--muted); margin-top: 0.7rem; font-weight: 500; }
+  .lang-cert { font-size: 0.65rem; color: var(--muted); margin-top: 0.7rem; }
 
   /* ─── CONTACT ─── */
   #contact {
@@ -574,27 +559,23 @@
     gap: 0.5rem;
     text-decoration: none;
     font-size: 0.7rem;
-    font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--muted);
-    background: var(--bg);
     padding: 0.75rem 1.4rem;
     border: 1px solid var(--border);
     transition: all 0.2s;
   }
-  .contact-link:hover { border-color: var(--accent); color: var(--accent); background: var(--bg2); }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
 
   /* ─── FOOTER ─── */
   footer {
     padding: 1.5rem 4rem;
     border-top: 1px solid var(--border);
-    background: var(--bg);
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 0.62rem;
-    font-weight: 500;
     color: var(--muted);
     letter-spacing: 0.1em;
   }
@@ -629,6 +610,7 @@
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">GF<span>.</span></a>
   <ul class="nav-links">
@@ -640,6 +622,7 @@
   </ul>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
   <div class="hero-left">
     <div class="hero-tag">Automotive Engineer</div>
@@ -692,6 +675,7 @@
   </div>
 </section>
 
+<!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track">
     <span class="ticker-item">Vehicle Dynamics</span>
@@ -704,6 +688,7 @@
     <span class="ticker-item">Optimal Control</span>
     <span class="ticker-item">RWTH Aachen</span>
     <span class="ticker-item">Politecnico di Milano</span>
+    <!-- duplicate for seamless loop -->
     <span class="ticker-item">Vehicle Dynamics</span>
     <span class="ticker-item">Lap-Time Simulation</span>
     <span class="ticker-item">FEM Analysis</span>
@@ -717,6 +702,7 @@
   </div>
 </div>
 
+<!-- ABOUT -->
 <section id="about">
   <div class="section-header reveal">
     <span class="section-num">01 /</span>
@@ -764,6 +750,7 @@
   </div>
 </section>
 
+<!-- SKILLS -->
 <section id="skills">
   <div class="section-header reveal">
     <span class="section-num">02 /</span>
@@ -827,6 +814,7 @@
   </div>
 </section>
 
+<!-- EXPERIENCE -->
 <section id="experience">
   <div class="section-header reveal">
     <span class="section-num">03 /</span>
@@ -903,6 +891,7 @@
   </div>
 </section>
 
+<!-- EDUCATION -->
 <section id="education">
   <div class="section-header reveal">
     <span class="section-num">04 /</span>
@@ -933,6 +922,7 @@
   </div>
 </section>
 
+<!-- LANGUAGES -->
 <section id="languages">
   <div class="section-header reveal">
     <span class="section-num">05 /</span>
@@ -960,6 +950,7 @@
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
     <div class="section-header reveal" style="justify-content:center;">
