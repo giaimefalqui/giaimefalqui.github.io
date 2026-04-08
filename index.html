@@ -348,14 +348,19 @@ footer {
           <div class="card-header">
             <div class="card-logo">
               <svg viewBox="0 0 68 68" width="68" height="68" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="34" cy="34" r="33" fill="#d4e6df" stroke="#8fb4a6" stroke-width="1"/>
-                <text x="34" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#5a8a78" font-weight="700">EA</text>
-              <img src="images/ecurie-aix.png" />
+                <defs>
+                  <clipPath id="circle-clip">
+                    <circle cx="34" cy="34" r="33" />
+                  </clipPath>
+                </defs>
+                <circle cx="34" cy="34" r="33" fill="none" stroke="#8fb4a6" stroke-width="1"/>
+                <image href="images/ecurie-aix.png" x="1" y="1" width="66" height="66" clip-path="url(#circle-clip)" preserveAspectRatio="xMidYMid slice" />
+              </svg>
             </div>
             <div>
-              <div class="card-period">Oct 2024 — Oct 2025 · Aachen, DE</div>
-              <div class="card-role">Vehicle Dynamics Engineer</div>
-              <div class="card-org">Ecurie Aix — Formula Student Team</div>
+              <div class="card-period">Oct 2024 — Present · Aachen, Germany</div>
+              <div class="card-role">M.Sc. Automotive Engineering</div>
+              <div class="card-org">RWTH Aachen University</div>
             </div>
           </div>
           <div class="card-divider"></div>
