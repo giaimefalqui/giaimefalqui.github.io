@@ -616,6 +616,103 @@
         animation-delay: 0.60s;
     }
 
+    /* ===== MODALS ===== */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 300;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(4px);
+    }
+
+    .modal-overlay.active {
+        display: flex;
+    }
+
+    .modal-content {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 1.5rem;
+        padding: clamp(2rem, 5vw, 3.5rem);
+        max-width: 700px;
+        width: 90%;
+        max-height: 85vh;
+        overflow-y: auto;
+        position: relative;
+        animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes modalSlideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        transition: color 0.2s;
+    }
+
+    .modal-close:hover {
+        color: var(--text);
+    }
+
+    .modal-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2rem;
+        font-weight: 300;
+        color: var(--text);
+        margin-bottom: 1rem;
+        padding-right: 2rem;
+    }
+
+    .modal-subtitle {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        margin-bottom: 1.8rem;
+        letter-spacing: 0.05em;
+    }
+
+    .modal-description {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.85;
+        margin-bottom: 1.8rem;
+    }
+
+    .modal-description strong {
+        color: var(--text);
+        font-weight: 400;
+    }
+
+    .modal-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
     @media (max-width: 900px) {
         nav {
             padding: 1rem 1.5rem;
@@ -836,14 +933,14 @@
                     <div class="card-divider"></div>
                     <ul class="card-bullets">
                         <li>
-                            Developed <strong>mathematical</strong> and <strong>physical systems</strong><br />
+                            Developed <strong>mathematical</strong> and <strong>physical systems</strong>
                             of an <strong>Optimal Control</strong> problem to <strong>minimize</strong> the <strong>lap time</strong> of a <strong>4-wheel-drive electric Formula vehicle</strong>.
                         </li>
                         <li><strong>Interactive GUI</strong> for setup, simulation and result analysis.</li>
                         <li>Contributed to <strong> 2nd place at the <i>FSG MathWorks Modeling &amp; Simulation Award 2025</i></strong>.</li>
                     </ul>
                     <div class="card-more-info">
-                        <a href="#" class="more-info-link">More Info →</a>
+                        <a href="#" class="more-info-link" data-modal="modal-project-1">More Info →</a>
                     </div>
                 </div>
 
@@ -862,7 +959,7 @@
                         <li>Results, learnings, or awards received.</li>
                     </ul>
                     <div class="card-more-info">
-                        <a href="#" class="more-info-link">More Info →</a>
+                        <a href="#" class="more-info-link" data-modal="modal-project-2">More Info →</a>
                     </div>
                 </div>
 
@@ -1038,7 +1135,63 @@
     </div>
 </section>
 
+<!-- ═══ MODALS ═══ -->
+<div class="modal-overlay" id="modal-project-1">
+    <div class="modal-content">
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+        <h3 class="modal-title">Optimal Control Lap Time Simulation</h3>
+        <p class="modal-subtitle">Ecurie-Aix Formula Student Team</p>
+        <p class="modal-description">
+            This project involved developing a comprehensive <strong>Optimal Control framework</strong> to minimize lap time for a 4-wheel-drive electric Formula Student vehicle. The system combines advanced control theory with vehicle dynamics simulation.
+        </p>
+        <p class="modal-description">
+            <strong>Key Contributions:</strong><br>
+            • Mathematical formulation of the optimal control problem using Pontryagin's Maximum Principle<br>
+            • Integration of vehicle dynamics model with tire friction constraints<br>
+            • Development of efficient numerical solver using CasADi and MATLAB<br>
+            • Interactive GUI for parameter setup, simulation execution, and results visualization<br>
+            • Lap time predictions with ±2-3% accuracy compared to experimental data
+        </p>
+        <p class="modal-description">
+            <strong>Results:</strong> 2nd place at the FSG MathWorks Modeling & Simulation Award 2025, recognizing the excellence in model development and practical application to vehicle performance optimization.
+        </p>
+        <div class="modal-tags">
+            <span class="card-tag">Optimal Control</span>
+            <span class="card-tag">Vehicle Dynamics</span>
+            <span class="card-tag">CasADi</span>
+            <span class="card-tag">MATLAB</span>
+            <span class="card-tag">Simulation</span>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-project-2">
+    <div class="modal-content">
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+        <h3 class="modal-title">Project Title</h3>
+        <p class="modal-subtitle">Your Organization</p>
+        <p class="modal-description">
+            Add detailed project description here. This modal provides an expanded view of your project with comprehensive information about your role, technical achievements, and outcomes.
+        </p>
+        <p class="modal-description">
+            <strong>Key Contributions:</strong><br>
+            • Point 1<br>
+            • Point 2<br>
+            • Point 3
+        </p>
+        <p class="modal-description">
+            <strong>Results:</strong> Describe the measurable outcomes and impact of this project.
+        </p>
+        <div class="modal-tags">
+            <span class="card-tag">Tag 1</span>
+            <span class="card-tag">Tag 2</span>
+            <span class="card-tag">Tag 3</span>
+        </div>
+    </div>
+</div>
+
 <script>
+    // ═══ CAROUSEL FUNCTIONALITY ═══
     function initCarousel(trackId, prevId, nextId, dotsId) {
         const track = document.getElementById(trackId);
         const cards = Array.from(track.querySelectorAll('.c-card'));
@@ -1088,6 +1241,36 @@
         window.addEventListener('resize', render);
     }
 
+    // ═══ MODAL FUNCTIONALITY ═══
+    document.querySelectorAll('.more-info-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const modalId = link.getAttribute('data-modal');
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    document.querySelectorAll('.modal-close').forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.closest('.modal-overlay').classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // ═══ INITIALIZE CAROUSELS ═══
     initCarousel('exp-track', 'exp-prev', 'exp-next', 'exp-dots');
     initCarousel('edu-track', 'edu-prev', 'edu-next', 'edu-dots');
     initCarousel('proj-track', 'proj-prev', 'proj-next', 'proj-dots');
