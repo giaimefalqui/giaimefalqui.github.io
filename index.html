@@ -50,7 +50,7 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        padding: 1.2rem 4rem;
+        padding: 1.2rem clamp(1.5rem, 5vw, 4rem);
         background: rgba(255,255,255,0.92);
         backdrop-filter: blur(14px);
         border-bottom: 1px solid var(--border);
@@ -62,14 +62,14 @@
 
     .nav-links {
         display: flex;
-        gap: 2.5rem;
+        gap: clamp(1.5rem, 3vw, 2.5rem);
         list-style: none;
     }
 
         .nav-links a {
             text-decoration: none;
             color: var(--text-nav);
-            font-size: 0.75rem;
+            font-size: clamp(0.625rem, 1.5vw, 0.75rem);
             letter-spacing: 0.12em;
             text-transform: uppercase;
             transition: color 0.2s;
@@ -246,8 +246,8 @@
 
     .page-title {
         font-family: 'Cormorant Garamond', serif;
-        /* You already had this perfect! */
         font-size: clamp(2rem, 4vw, 3rem);
+        line-height: clamp(1, 1.2vw, 1.4);
         font-weight: 300;
         color: var(--text);
         letter-spacing: -0.01em;
@@ -257,7 +257,6 @@
         position: relative;
         display: flex;
         align-items: center;
-        /* Increased the min-height so tall desktop cards don't get cut off */
         min-height: clamp(300px, 65vw, 500px);
     }
 
@@ -336,7 +335,7 @@
         }
 
     .card-period {
-        font-size: 0.62rem;
+        font-size: clamp(0.6rem, 1.8vw, 0.95rem);
         letter-spacing: 0.14em;
         text-transform: uppercase;
         color: var(--accent-dark);
@@ -345,7 +344,6 @@
 
     .card-role {
         font-family: 'Cormorant Garamond', serif;
-        /* Title font scales so it doesn't break into awkward lines on mobile */
         font-size: clamp(1.15rem, 5vw, 1.5rem);
         font-weight: 600;
         color: var(--text);
@@ -354,7 +352,7 @@
     }
 
     .card-org {
-        font-size: 0.73rem;
+        font-size: clamp(0.7rem, 2.2vw, 1.1rem);
         color: var(--text-muted);
     }
 
@@ -413,6 +411,26 @@
         letter-spacing: 0.08em;
         text-transform: uppercase;
     }
+
+    .card-more-info {
+        margin-top: 1.8rem;
+        padding-top: 1.4rem;
+        border-top: 1px solid var(--border);
+    }
+
+    .more-info-link {
+        font-size: 0.77rem;
+        color: var(--accent-dark);
+        text-decoration: none;
+        letter-spacing: 0.05em;
+        transition: all 0.2s;
+        display: inline-block;
+    }
+
+        .more-info-link:hover {
+            transform: translateX(3px);
+            color: var(--text);
+        }
 
     /* ── ARROWS ── */
     .carousel-arrow {
@@ -641,6 +659,7 @@
     <ul class="nav-links">
         <li><a href="#hero">Home</a></li>
         <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#bottom">Contact</a></li>
     </ul>
@@ -700,20 +719,20 @@
                             </svg>
                         </div>
                         <div>
-                            <div class="card-period">Oct 2024 — Present · Aachen, Germany</div>
+                            <div class="card-period">Oct 2024 - Oct 2025<br /> Aachen, Germany</div>
                             <div class="card-role">Vehicle Dynamics Engineer</div>
-                            <div class="card-org">RWTH Aachen University</div>
+                            <div class="card-org">Ecurie-Aix Formula Student Team</div>
                         </div>
                     </div>
                     <div class="card-divider"></div>
                     <ul class="card-bullets">
-                        <li>Development of an Optimal Control model for Lap-Time simulation using <strong>CasADi</strong>'s framework in MATLAB.</li>
-                        <li>Vehicle manufacturing, testing, and competition setup for Formula Student events.</li>
-                        <li>Contributed to <strong>2nd place at the FSG MathWorks Modeling &amp; Simulation Award 2025</strong>.</li>
+                        <li>Developed an <strong>Optimal Control</strong> model for <strong>Lap-Time simulation</strong> using <strong>CasADi</strong>'s framework in <strong>MATLAB</strong>.</li>
+                        <li>Vehicle manufacturing, testing and setup.</li>
+                        <li>Contributed to <strong> 2nd place at the <i>FSG MathWorks Modeling &amp; Simulation Award 2025</i></strong>.</li>
                     </ul>
                     <div class="card-tags">
-                        <span class="card-tag">MATLAB</span><span class="card-tag">CasADi</span>
                         <span class="card-tag">Optimal Control</span><span class="card-tag">Vehicle Dynamics</span>
+                        <span class="card-tag">manufacturing</span><span class="card-tag">testing</span><span class="card-tag">setup</span>
                     </div>
                 </div>
 
@@ -731,20 +750,20 @@
                             </svg>
                         </div>
                         <div>
-                            <div class="card-period">Sep 2023 — Dec 2023 · Brescia, IT</div>
-                            <div class="card-role">Project Engineer Intern</div>
-                            <div class="card-org">Neba Srl — Curricular Internship</div>
+                            <div class="card-period">Sep 2023 - Dec 2023<br />Brescia, Italy</div>
+                            <div class="card-role">Mechanical Engineer Intern</div>
+                            <div class="card-org">Neba Srl</div>
                         </div>
                     </div>
                     <div class="card-divider"></div>
                     <ul class="card-bullets">
-                        <li><strong>B.Sc. Thesis project</strong>: FEM Analysis of an industrial plotter for printing on ceramic materials.</li>
-                        <li>Structural simulation and validation under operational loads using <strong>Ansys Mechanical</strong>.</li>
-                        <li>Technical reporting and presentation of results to engineering team.</li>
+                        <li>B.Sc. Thesis project:<br /> <strong><i>FEM Analysis of an industrial plotter for printing on ceramic materials</i></strong>.</li>
+                        <li>Analyzed structural loads and deformations under various operating conditions.</li>
+                        <li>Tested and verified mechanical linkages under various operating conditions.</li>
                     </ul>
                     <div class="card-tags">
-                        <span class="card-tag">Ansys Mechanical</span><span class="card-tag">FEM Analysis</span>
-                        <span class="card-tag">B.Sc. Thesis</span>
+                        <span class="card-tag">FEM Analysis</span><span class="card-tag">structural analysis</span>
+                        <span class="card-tag">mechanical verification</span>
                     </div>
                 </div>
 
@@ -762,19 +781,19 @@
                             </svg>
                         </div>
                         <div>
-                            <div class="card-period">Mar 2023 — Jun 2023 · Brescia, IT</div>
-                            <div class="card-role">Project Engineer Intern</div>
-                            <div class="card-org">Neba Srl — Extra-curricular Internship</div>
+                            <div class="card-period">Mar 2023 - Jun 2023<br />Brescia, Italy</div>
+                            <div class="card-role">Mechanical Engineer Intern</div>
+                            <div class="card-org">Neba Srl</div>
                         </div>
                     </div>
                     <div class="card-divider"></div>
                     <ul class="card-bullets">
-                        <li>Mechanical design and <strong>CAD modeling</strong> of industrial components from concept to production.</li>
-                        <li>Technical drawings and structural calculations for manufacturing processes.</li>
-                        <li>Rapid prototyping with <strong>3D printing</strong> technologies for design validation.</li>
+                        <li><strong>Mechanical design</strong> and <strong>CAD modeling</strong> of industrial components from concept to production.</li>
+                        <li><strong>Technical drawings</strong> and <strong>structural calculations</strong> for manufacturing processes.</li>
+                        <li><strong>3D printing</strong> prototyping for design validation.</li>
                     </ul>
                     <div class="card-tags">
-                        <span class="card-tag">SolidWorks</span><span class="card-tag">CAD Modeling</span>
+                        <span class="card-tag">CAD Modeling</span>
                         <span class="card-tag">3D Printing</span><span class="card-tag">Tech Drawings</span>
                     </div>
                 </div>
@@ -794,10 +813,78 @@
     </div>
 </section>
 
+<!-- ═══ PROJECTS ═══ -->
+<section class="page carousel-page" id="projects">
+    <div class="page-heading">
+        <span class="page-num">02 /</span>
+        <h2 class="page-title">Projects</h2>
+    </div>
+    <div class="carousel-outer">
+        <button class="carousel-arrow" id="proj-prev">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
+        </button>
+        <div class="carousel-track-wrap">
+            <div class="carousel-track" id="proj-track">
+
+                <div class="c-card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-role">Optimal Control Lap Time Simulation</div>
+                            <div class="card-org">Ecurie-Aix Formula Student Team</div>
+                        </div>
+                    </div>
+                    <div class="card-divider"></div>
+                    <ul class="card-bullets">
+                        <li>
+                            Developed <strong>mathematical</strong> and <strong>physical systems</strong><br />
+                            of an <strong>Optimal Control</strong> problem to <strong>minimize</strong> the <strong>lap time</strong> of a <strong>4-wheel-drive electric Formula vehicle</strong>.
+                        </li>
+                        <li><strong>Interactive GUI</strong> for setup, simulation and result analysis.</li>
+                        <li>Contributed to <strong> 2nd place at the <i>FSG MathWorks Modeling &amp; Simulation Award 2025</i></strong>.</li>
+                    </ul>
+                    <div class="card-more-info">
+                        <a href="#" class="more-info-link">More Info →</a>
+                    </div>
+                </div>
+
+                <div class="c-card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-period">Project Timeline</div>
+                            <div class="card-role">Project Title</div>
+                            <div class="card-org">Your Organization</div>
+                        </div>
+                    </div>
+                    <div class="card-divider"></div>
+                    <ul class="card-bullets">
+                        <li>Project description and key responsibilities.</li>
+                        <li>Technical achievements and contributions.</li>
+                        <li>Results, learnings, or awards received.</li>
+                    </ul>
+                    <div class="card-more-info">
+                        <a href="#" class="more-info-link">More Info →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <button class="carousel-arrow" id="proj-next">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
+        </button>
+    </div>
+    <div class="carousel-dots" id="proj-dots"></div>
+    <div class="scroll-hint">
+        <span>Scroll</span>
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M12 5v14M5 12l7 7 7-7" />
+        </svg>
+    </div>
+</section>
+
 <!-- ═══ EDUCATION ═══ -->
 <section class="page carousel-page" id="education">
     <div class="page-heading">
-        <span class="page-num">02 /</span>
+        <span class="page-num">03 /</span>
         <h2 class="page-title">Education</h2>
     </div>
     <div class="carousel-outer">
@@ -821,20 +908,20 @@
                             </svg>
                         </div>
                         <div>
-                            <div class="card-period">Oct 2024 — Present · Aachen, Germany</div>
+                            <div class="card-period">Oct 2024 - Present <br /> Aachen, Germany</div>
                             <div class="card-role">Automotive Engineering M.Sc.</div>
                             <div class="card-org">RWTH Aachen University</div>
                         </div>
                     </div>
                     <div class="card-divider"></div>
                     <ul class="card-bullets">
-                        <li>Current CGPA: 2.3 — <strong>Dean's List 2025</strong>, top 5% of the M.Sc. program.</li>
+                        <li>Current CGPA: 2.3</li>
+                        <li><strong>Dean's List 2025</strong>, <strong>top 5%</strong> of the M.Sc. program.</li>
                         <li>Focus areas: electrification, battery storage systems, vehicle structural design.</li>
-                        <li>Active member of Ecurie Aix Formula Student team throughout studies.</li>
                     </ul>
                     <div class="card-tags">
-                        <span class="card-tag">Electrification</span><span class="card-tag">Battery Systems</span>
-                        <span class="card-tag">Structural Design</span><span class="card-tag">Dean's List 2025</span>
+                        <span class="card-tag">Automotive engineering</span>
+                        <span class="card-tag">Electrification</span><span class="card-tag">Automotive Design</span>
                     </div>
                 </div>
 
@@ -852,20 +939,21 @@
                             </svg>
                         </div>
                         <div>
-                            <div class="card-period">Sep 2018 — Sep 2024 · Milan, Italy</div>
+                            <div class="card-period">Sep 2018 - Sep 2024<br />Milan, Italy</div>
                             <div class="card-role">Mechanical Engineering B.Sc.</div>
                             <div class="card-org">Politecnico di Milano</div>
                         </div>
                     </div>
                     <div class="card-divider"></div>
                     <ul class="card-bullets">
-                        <li>Final grade: <strong>95/110</strong> — specialization in vehicle dynamics, propulsion systems, and vehicle design.</li>
-                        <li>Thesis: FEM Analysis of an industrial plotter for ceramic printing (Neba Srl).</li>
-                        <li>Strong foundations in mechanics, thermodynamics, and engineering mathematics.</li>
+                        <li>Final grade: 95/110</li>
+                        <li>Strong foundations in mechanics and engineering mathematics.</li>
+                        <li>Specialization in vehicle dynamics, propulsion systems, and vehicle design.</li>
+
                     </ul>
                     <div class="card-tags">
-                        <span class="card-tag">Vehicle Dynamics</span><span class="card-tag">Propulsion</span>
-                        <span class="card-tag">FEM Thesis</span><span class="card-tag">95 / 110</span>
+                        <span class="card-tag">Mechanical engineering</span>
+                        <span class="card-tag">Vehicle Dynamics</span><span class="card-tag">Propulsion systems</span>
                     </div>
                 </div>
 
@@ -1002,6 +1090,7 @@
 
     initCarousel('exp-track', 'exp-prev', 'exp-next', 'exp-dots');
     initCarousel('edu-track', 'edu-prev', 'edu-next', 'edu-dots');
+    initCarousel('proj-track', 'proj-prev', 'proj-next', 'proj-dots');
 </script>
 </body>
 </html>
