@@ -9,7 +9,7 @@
 body{background:#f5f0fa;min-height:100vh;padding:1.5rem 1rem;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;display:flex;justify-content:center;align-items:flex-start}
 #wrap{width:100%;max-width:380px}
 
-.orbit-outer{position:relative;padding:50px 0;display:flex;justify-content:center}
+.orbit-outer{position:relative;padding:70px 0;display:flex;justify-content:center}
 #badge-canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
 .card-inner{position:relative;z-index:2;width:240px;border-radius:18px;overflow:hidden;box-shadow:0 6px 32px rgba(19,8,37,.22)}
 
@@ -37,12 +37,6 @@ canvas#cfv{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:
 .mich{display:flex;align-items:center;gap:4px;margin-top:5px;font-size:9px;color:#999}
 .mdot{width:6px;height:6px;border-radius:50%;background:#e24b4a;flex-shrink:0}
 .rtap{display:flex;align-items:center;justify-content:center;gap:4px;margin-top:6px;font-size:9px;color:#534AB7;font-weight:600}
-
-.bscard{border:1px solid #C0DD97;border-radius:10px;overflow:hidden;background:#EAF3DE;margin-bottom:.9rem}
-.bsimg{width:100%;height:80px;object-fit:cover;display:block;border-bottom:1px solid #C0DD97}
-.bsinfo{padding:.7rem}
-.bstitle{font-size:11px;font-weight:700;color:#27500A;margin-bottom:.3rem}
-.bstxt{font-size:10px;color:#3B6D11;line-height:1.55}
 
 .firma{font-size:11px;color:#999;font-style:italic;text-align:center;margin-bottom:.8rem}
 .hrt{display:inline-block;animation:pulse 1.3s ease-in-out infinite}
@@ -108,15 +102,6 @@ canvas#cfv{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:
             </a>
           </div>
 
-          <!-- ★ BAMBINI: sostituisci QUI_IMMAGINE_BAMBINI con il percorso della tua foto -->
-          <div class="bscard">
-            <img class="bsimg" src="bimbi.jpg" alt="I bimbi">
-            <div class="bsinfo">
-              <p class="bstitle">👶 Babysitter garantito</p>
-              <p class="bstxt">Quella sera ai bimbi ci pensiamo noi. Tu esci, ti siedi, ordini — e non guardi l'orologio.</p>
-            </div>
-          </div>
-
           <p class="firma">— Mamma, Papà &amp; Giaime &nbsp;<span class="hrt">❤️</span></p>
           <button class="btn" onclick="launch()">✨ Festeggia con noi!</button>
         </div>
@@ -148,7 +133,11 @@ const bc = document.getElementById('badge-canvas');
 const bctx = bc.getContext('2d');
 let angle = 0;
 let orbitRunning = false;
-const TEXT = '👶 Babysitting incluso! ✨ Serata libera! 🎉 Ci pensiamo noi! 🌟 ';
+const TEXT = 'BABYSITTING INCLUSO!    BABYSITTING INCLUSO!    ';
+const BADGE_R = 24;
+
+const bimbiImg = new Image();
+bimbiImg.src = 'bimbi.jpg';
 
 function sizeCanvas() {
   const outer = document.getElementById('orbit-outer');
@@ -162,7 +151,7 @@ function drawOrbit() {
   const centerX = W / 2;
   const centerY = H / 2;
   const RX = Math.min(W / 2 - 10, 160);
-  const RY = H / 2 - 10;
+  const RY = Math.min(H / 2 - 10, RX * 1.15);
 
   bctx.clearRect(0, 0, W, H);
 
@@ -174,52 +163,55 @@ function drawOrbit() {
   bctx.stroke();
   bctx.restore();
 
-  bctx.save();
-  bctx.strokeStyle = 'rgba(240,201,107,0.25)';
-  bctx.lineWidth = 1.5;
-  bctx.setLineDash([4,6]);
-  bctx.beginPath();
-  bctx.ellipse(centerX, centerY, RX, RY, 0, 0, Math.PI*2);
-  bctx.stroke();
-  bctx.restore();
-
   const steps = TEXT.length;
   bctx.save();
   bctx.font = 'bold 13px -apple-system, BlinkMacSystemFont, sans-serif';
-  bctx.fillStyle = '#f0c96b';
+  bctx.fillStyle = '#3C3489';
   bctx.textAlign = 'center';
   bctx.textBaseline = 'middle';
   for (let i = 0; i < steps; i++) {
-    const a = (i / steps) * Math.PI * 2 + angle;
+    const a = -(i / steps) * Math.PI * 2 + angle;
     const x = centerX + RX * Math.cos(a);
     const y = centerY + RY * Math.sin(a);
-    const tangent = Math.atan2(RY * Math.cos(a), -RX * Math.sin(a));
+    const tangent = Math.atan2(-RY * Math.cos(a), RX * Math.sin(a));
     bctx.save();
     bctx.translate(x, y);
-    bctx.rotate(tangent + Math.PI/2);
+    bctx.rotate(tangent - Math.PI/2);
     bctx.fillText(TEXT[i], 0, 0);
     bctx.restore();
   }
   bctx.restore();
 
-  const bAngle = angle + Math.PI * 0.1;
-  const bx2 = centerX + RX * Math.cos(bAngle);
-  const by2 = centerY + RY * Math.sin(bAngle);
-  bctx.save();
-  bctx.fillStyle = '#EAF3DE';
-  bctx.strokeStyle = '#3B6D11';
-  bctx.lineWidth = 1.5;
-  bctx.beginPath();
-  bctx.arc(bx2, by2, 15, 0, Math.PI*2);
-  bctx.fill();
-  bctx.stroke();
-  bctx.font = '18px serif';
-  bctx.textAlign = 'center';
-  bctx.textBaseline = 'middle';
-  bctx.fillText('👶', bx2, by2);
-  bctx.restore();
+  var gapA = angle - (21.5 / steps) * Math.PI * 2;
+  var gapB = gapA + Math.PI;
+  [gapA, gapB].forEach(function(bAngle) {
+    var bx2 = centerX + RX * Math.cos(bAngle);
+    var by2 = centerY + RY * Math.sin(bAngle);
+    bctx.save();
+    bctx.beginPath();
+    bctx.arc(bx2, by2, BADGE_R, 0, Math.PI*2);
+    bctx.closePath();
+    if (bimbiImg.complete && bimbiImg.naturalWidth > 0) {
+      bctx.clip();
+      bctx.drawImage(bimbiImg, bx2 - BADGE_R, by2 - BADGE_R, BADGE_R*2, BADGE_R*2);
+      bctx.restore();
+      bctx.save();
+      bctx.beginPath();
+      bctx.arc(bx2, by2, BADGE_R, 0, Math.PI*2);
+      bctx.strokeStyle = '#fff';
+      bctx.lineWidth = 2.5;
+      bctx.stroke();
+    } else {
+      bctx.fillStyle = '#EAF3DE';
+      bctx.fill();
+      bctx.strokeStyle = '#3B6D11';
+      bctx.lineWidth = 1.5;
+      bctx.stroke();
+    }
+    bctx.restore();
+  });
 
-  angle -= 0.006;
+  angle += 0.006;
   if (orbitRunning) requestAnimationFrame(drawOrbit);
 }
 
