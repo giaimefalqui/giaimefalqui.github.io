@@ -9,9 +9,9 @@
 body{background:#f5f0fa;min-height:100vh;padding:1.5rem 1rem;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;display:flex;justify-content:center;align-items:flex-start}
 #wrap{width:100%;max-width:380px}
 
-.orbit-outer{position:relative;margin:0 auto;width:340px;height:420px}
-#badge-canvas{position:absolute;inset:0;width:100%;height:100%}
-.card-inner{position:absolute;top:52%;left:50%;transform:translate(-50%,-50%);width:240px;border-radius:18px;overflow:hidden;box-shadow:0 6px 32px rgba(19,8,37,.22)}
+.orbit-outer{position:relative;padding:50px 0;display:flex;justify-content:center}
+#badge-canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
+.card-inner{position:relative;z-index:2;width:240px;border-radius:18px;overflow:hidden;box-shadow:0 6px 32px rgba(19,8,37,.22)}
 
 .hdr{background:#130825;padding:1.5rem 1rem 1.2rem;text-align:center;position:relative;overflow:hidden}
 canvas#cfv{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
@@ -68,9 +68,9 @@ canvas#cfv{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:
   </div>
 
   <div id="card-wrap">
-    <div class="orbit-outer">
-      <canvas id="badge-canvas" width="340" height="420"></canvas>
-      <div class="card-inner">
+    <div class="orbit-outer" id="orbit-outer">
+      <canvas id="badge-canvas"></canvas>
+      <div class="card-inner" id="card-inner">
         <div class="hdr">
           <canvas id="cfv"></canvas>
           <svg class="stars" viewBox="0 0 240 130" xmlns="http://www.w3.org/2000/svg">
@@ -98,7 +98,7 @@ canvas#cfv{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:
           <!-- ★ RISTORANTE: sostituisci QUI_IMMAGINE_RISTORANTE con il percorso della tua foto -->
           <div class="rcard">
             <a href="https://www.ristoranteduanima.it/" target="_blank">
-              <img class="rimg" src="QUI_IMMAGINE_RISTORANTE" alt="Ristorante Duanima">
+              <img class="rimg" src="ristorante.jpg" alt="Ristorante Duanima">
               <div class="rinfo">
                 <p class="rname">Ristorante Duanima</p>
                 <p class="rdeg">🍷 Degustazione 4 portate</p>
@@ -110,7 +110,7 @@ canvas#cfv{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:
 
           <!-- ★ BAMBINI: sostituisci QUI_IMMAGINE_BAMBINI con il percorso della tua foto -->
           <div class="bscard">
-            <img class="bsimg" src="QUI_IMMAGINE_BAMBINI" alt="I bimbi">
+            <img class="bsimg" src="bimbi.jpg" alt="I bimbi">
             <div class="bsinfo">
               <p class="bstitle">👶 Babysitter garantito</p>
               <p class="bstxt">Quella sera ai bimbi ci pensiamo noi. Tu esci, ti siedi, ordini — e non guardi l'orologio.</p>
@@ -145,72 +145,81 @@ function celebrate(){
 }
 
 const bc = document.getElementById('badge-canvas');
-const bx = bc.getContext('2d');
+const bctx = bc.getContext('2d');
 let angle = 0;
 let orbitRunning = false;
 const TEXT = '👶 Babysitting incluso! ✨ Serata libera! 🎉 Ci pensiamo noi! 🌟 ';
-const R = 148;
-const OX = 170, OY = 210;
+
+function sizeCanvas() {
+  const outer = document.getElementById('orbit-outer');
+  bc.width = outer.offsetWidth;
+  bc.height = outer.offsetHeight;
+}
 
 function drawOrbit() {
-  bx.clearRect(0, 0, bc.width, bc.height);
+  const W = bc.width;
+  const H = bc.height;
+  const centerX = W / 2;
+  const centerY = H / 2;
+  const RX = Math.min(W / 2 - 10, 160);
+  const RY = H / 2 - 10;
 
-  bx.save();
-  bx.strokeStyle = 'rgba(160,120,220,0.15)';
-  bx.lineWidth = 26;
-  bx.beginPath();
-  bx.arc(OX, OY, R, 0, Math.PI*2);
-  bx.stroke();
-  bx.restore();
+  bctx.clearRect(0, 0, W, H);
 
-  bx.save();
-  bx.strokeStyle = 'rgba(240,201,107,0.25)';
-  bx.lineWidth = 1.5;
-  bx.setLineDash([4,6]);
-  bx.beginPath();
-  bx.arc(OX, OY, R, 0, Math.PI*2);
-  bx.stroke();
-  bx.restore();
+  bctx.save();
+  bctx.strokeStyle = 'rgba(160,120,220,0.15)';
+  bctx.lineWidth = 26;
+  bctx.beginPath();
+  bctx.ellipse(centerX, centerY, RX, RY, 0, 0, Math.PI*2);
+  bctx.stroke();
+  bctx.restore();
 
-  const full = Math.PI * 2 * R;
-  const chars = TEXT.split('');
-  const spacing = full / chars.length;
+  bctx.save();
+  bctx.strokeStyle = 'rgba(240,201,107,0.25)';
+  bctx.lineWidth = 1.5;
+  bctx.setLineDash([4,6]);
+  bctx.beginPath();
+  bctx.ellipse(centerX, centerY, RX, RY, 0, 0, Math.PI*2);
+  bctx.stroke();
+  bctx.restore();
 
-  bx.save();
-  bx.font = 'bold 13px -apple-system, BlinkMacSystemFont, sans-serif';
-  bx.fillStyle = '#f0c96b';
-  bx.textAlign = 'center';
-  bx.textBaseline = 'middle';
-  chars.forEach((ch, i) => {
-    const a = (i * spacing / R) + angle;
-    const x = OX + R * Math.cos(a);
-    const y = OY + R * Math.sin(a);
-    bx.save();
-    bx.translate(x, y);
-    bx.rotate(a + Math.PI/2);
-    bx.fillText(ch, 0, 0);
-    bx.restore();
-  });
-  bx.restore();
+  const steps = TEXT.length;
+  bctx.save();
+  bctx.font = 'bold 13px -apple-system, BlinkMacSystemFont, sans-serif';
+  bctx.fillStyle = '#f0c96b';
+  bctx.textAlign = 'center';
+  bctx.textBaseline = 'middle';
+  for (let i = 0; i < steps; i++) {
+    const a = (i / steps) * Math.PI * 2 + angle;
+    const x = centerX + RX * Math.cos(a);
+    const y = centerY + RY * Math.sin(a);
+    const tangent = Math.atan2(RY * Math.cos(a), -RX * Math.sin(a));
+    bctx.save();
+    bctx.translate(x, y);
+    bctx.rotate(tangent + Math.PI/2);
+    bctx.fillText(TEXT[i], 0, 0);
+    bctx.restore();
+  }
+  bctx.restore();
 
   const bAngle = angle + Math.PI * 0.1;
-  const bx2 = OX + R * Math.cos(bAngle);
-  const by2 = OY + R * Math.sin(bAngle);
-  bx.save();
-  bx.fillStyle = '#EAF3DE';
-  bx.strokeStyle = '#3B6D11';
-  bx.lineWidth = 1.5;
-  bx.beginPath();
-  bx.arc(bx2, by2, 15, 0, Math.PI*2);
-  bx.fill();
-  bx.stroke();
-  bx.font = '18px serif';
-  bx.textAlign = 'center';
-  bx.textBaseline = 'middle';
-  bx.fillText('👶', bx2, by2);
-  bx.restore();
+  const bx2 = centerX + RX * Math.cos(bAngle);
+  const by2 = centerY + RY * Math.sin(bAngle);
+  bctx.save();
+  bctx.fillStyle = '#EAF3DE';
+  bctx.strokeStyle = '#3B6D11';
+  bctx.lineWidth = 1.5;
+  bctx.beginPath();
+  bctx.arc(bx2, by2, 15, 0, Math.PI*2);
+  bctx.fill();
+  bctx.stroke();
+  bctx.font = '18px serif';
+  bctx.textAlign = 'center';
+  bctx.textBaseline = 'middle';
+  bctx.fillText('👶', bx2, by2);
+  bctx.restore();
 
-  angle -= 0.008;
+  angle -= 0.006;
   if (orbitRunning) requestAnimationFrame(drawOrbit);
 }
 
@@ -227,6 +236,7 @@ function openCard() {
     setTimeout(() => { c.style.opacity = '1'; }, 20);
     setTimeout(() => {
       celebrate();
+      sizeCanvas();
       orbitRunning = true;
       drawOrbit();
     }, 450);
@@ -240,6 +250,8 @@ function launch() {
   b.textContent = lb[Math.floor(Math.random()*lb.length)];
   setTimeout(() => { b.textContent = '✨ Festeggia con noi!'; }, 2200);
 }
+
+window.addEventListener('resize', () => { if(orbitRunning){ sizeCanvas(); } });
 </script>
 </body>
 </html>
