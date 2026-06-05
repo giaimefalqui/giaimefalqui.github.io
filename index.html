@@ -191,23 +191,15 @@ function drawOrbit() {
     bctx.beginPath();
     bctx.arc(bx2, by2, BADGE_R, 0, Math.PI*2);
     bctx.closePath();
-    if (bimbiImg.complete && bimbiImg.naturalWidth > 0) {
-      bctx.clip();
-      bctx.drawImage(bimbiImg, bx2 - BADGE_R, by2 - BADGE_R, BADGE_R*2, BADGE_R*2);
-      bctx.restore();
-      bctx.save();
-      bctx.beginPath();
-      bctx.arc(bx2, by2, BADGE_R, 0, Math.PI*2);
-      bctx.strokeStyle = '#fff';
-      bctx.lineWidth = 2.5;
-      bctx.stroke();
-    } else {
-      bctx.fillStyle = '#EAF3DE';
-      bctx.fill();
-      bctx.strokeStyle = '#3B6D11';
-      bctx.lineWidth = 1.5;
-      bctx.stroke();
-    }
+    bctx.clip();
+    bctx.drawImage(bimbiImg, bx2 - BADGE_R, by2 - BADGE_R, BADGE_R*2, BADGE_R*2);
+    bctx.restore();
+    bctx.save();
+    bctx.beginPath();
+    bctx.arc(bx2, by2, BADGE_R, 0, Math.PI*2);
+    bctx.strokeStyle = '#fff';
+    bctx.lineWidth = 2.5;
+    bctx.stroke();
     bctx.restore();
   });
 
