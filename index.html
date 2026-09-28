@@ -9,6 +9,8 @@
     <meta property="og:description" content="Vehicle dynamics, optimal control and mechanical design. Open to full-time roles from January 2027." />
     <meta property="og:image" content="https://giaimefalqui.github.io/images/profile.jpg" />
     <meta property="og:url" content="https://giaimefalqui.github.io/" />
+    <meta name="robots" content="noindex" /> <!-- reachable via CV/applications only, kept out of search results -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23133369'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' fill='white' text-anchor='middle'%3EGF%3C/text%3E%3C/svg%3E" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -62,9 +64,6 @@
             border-bottom: 1px solid var(--border);
         }
 
-        .nav-logo span {
-            color: var(--accent-dark);
-        }
 
         .nav-links {
             display: flex;
@@ -124,12 +123,6 @@
                 display: block;
             }
 
-        .photo-placeholder {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.8rem;
-            font-weight: 300;
-            color: var(--accent-dark);
-        }
 
         .hero-name {
             font-family: 'Cormorant Garamond', serif;
@@ -173,34 +166,9 @@
                 font-weight: 400;
             }
 
-        .hero-badges {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.7rem;
-            margin-bottom: 3rem;
-        }
 
-        .badge {
-            font-size: 0.67rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            padding: 0.4rem 1rem;
-            border: 1px solid var(--border-med);
-            color: var(--text-muted);
-            transition: all 0.2s;
-        }
 
-            .badge:hover {
-                border-color: var(--accent);
-                color: var(--accent-dark);
-            }
 
-            .badge.accent {
-                background: var(--accent-light);
-                border-color: var(--accent);
-                color: var(--accent-dark);
-            }
 
         .scroll-hint {
             position: absolute;
@@ -231,7 +199,7 @@
         /* ===== CAROUSEL PAGES ===== */
         .carousel-page {
             justify-content: flex-start;
-            padding: clamp(4rem, 8vw, 6rem) 0 clamp(2rem, 4vw, 3rem);
+            padding: clamp(4rem, 8vw, 6rem) 0 6.5rem; /* bottom room for the absolute .scroll-hint, so it never sits on the dots */
             background: var(--bg2);
             overflow: hidden;
         }
@@ -269,6 +237,8 @@
         .carousel-track-wrap {
             flex: 1;
             overflow: hidden;
+            user-select: none;
+            touch-action: pan-y; /* vertical page scroll stays native, horizontal goes to the drag */
             padding: clamp(1rem, 3vw, 2rem) 0;
         }
 
@@ -297,7 +267,7 @@
                 transform: scale(1);
                 opacity: 1;
                 box-shadow: 0 12px 48px rgba(0,0,0,0.07);
-                cursor: default;
+                cursor: grab;
             }
 
             .c-card.side {
@@ -398,7 +368,7 @@
                     font-weight: 400;
                 }
 
-                .card-bullets a {
+                .card-bullets a, .modal-description a, .modal-bullets a {
                     color: var(--accent-dark);
                 }
 
@@ -617,13 +587,7 @@
             animation-delay: 0.36s;
         }
 
-        .fd5 {
-            animation-delay: 0.48s;
-        }
 
-        .fd6 {
-            animation-delay: 0.60s;
-        }
 
         /* ===== MODALS ===== */
         .modal-overlay {
@@ -655,6 +619,32 @@
             overflow-y: auto;
             position: relative;
             animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* native scrollbar hidden; a short indicator (JS) sits on the middle half of the modal */
+        .modal-content {
+            scrollbar-width: none;
+        }
+
+            .modal-content::-webkit-scrollbar {
+                display: none;
+            }
+
+        .scroll-track {
+            position: absolute;
+            right: 0.6rem;
+            width: 4px;
+            border-radius: 2px;
+            background: rgba(19, 51, 105, 0.08);
+            pointer-events: none;
+        }
+
+        .scroll-thumb {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            border-radius: 2px;
+            background: rgba(19, 51, 105, 0.35);
         }
 
         @keyframes modalSlideIn {
@@ -820,28 +810,8 @@
                 display: block;
             }
 
-            /* placeholder icon shown when no src is set */
-            .modal-thumb .thumb-placeholder {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 0.4rem;
-                color: var(--accent-dark);
-                opacity: 0.45;
-                pointer-events: none;
-                user-select: none;
-            }
 
-                .modal-thumb .thumb-placeholder svg {
-                    width: 28px;
-                    height: 28px;
-                }
 
-                .modal-thumb .thumb-placeholder span {
-                    font-size: 0.6rem;
-                    letter-spacing: 0.1em;
-                    text-transform: uppercase;
-                }
 
         /* ===== LIGHTBOX ===== */
         .lightbox-overlay {
@@ -854,6 +824,8 @@
             justify-content: center;
             backdrop-filter: blur(6px);
             cursor: zoom-out;
+            flex-direction: column;
+            gap: 1rem;
         }
 
             .lightbox-overlay.active {
@@ -862,7 +834,7 @@
 
         .lightbox-img {
             max-width: 90vw;
-            max-height: 85vh;
+            max-height: 80vh;
             border-radius: 0.75rem;
             box-shadow: 0 24px 80px rgba(0,0,0,0.5);
             object-fit: contain;
@@ -879,6 +851,14 @@
                 opacity: 1;
                 transform: scale(1);
             }
+        }
+
+        .lightbox-caption {
+            max-width: 90vw;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.85rem;
+            letter-spacing: 0.04em;
+            text-align: center;
         }
 
         .lightbox-close {
@@ -987,8 +967,8 @@
             <span class="page-num">01 /</span>
             <h2 class="page-title">Work Experience</h2>
         </div>
-        <div class="carousel-outer">
-            <button class="carousel-arrow" id="exp-prev">
+        <div class="carousel-outer" role="region" aria-roledescription="carousel" aria-label="Work experience">
+            <button class="carousel-arrow" id="exp-prev" aria-label="Previous experience">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
             </button>
             <div class="carousel-track-wrap">
@@ -997,10 +977,10 @@
                     <div class="c-card">
                         <div class="card-header">
                             <div class="card-logo">
-                                <svg viewBox="0 0 68 68" width="95%" height="95%" xmlns="http://www.w3.org/2000/svg">
+                                <svg role="img" aria-label="TUM Autonomous Motorsport logo" viewBox="0 0 68 68" width="95%" height="95%" xmlns="http://www.w3.org/2000/svg">
                                     <defs><clipPath id="circle-clip-tum"><circle cx="34" cy="34" r="33" /></clipPath></defs>
                                     <circle cx="34" cy="34" r="33" fill="none" />
-                                    <image href="images/tum.png" x="10" y="10" width="48" height="48" clip-path="url(#circle-clip-tum)" preserveAspectRatio="xMidYMid meet" />
+                                    <image href="images/tum.png" x="-3" y="-3" width="74" height="74" clip-path="url(#circle-clip-tum)" preserveAspectRatio="xMidYMid meet" />
                                 </svg>
                             </div>
                             <div>
@@ -1011,9 +991,10 @@
                         </div>
                         <div class="card-divider"></div>
                         <ul class="card-bullets">
-                            <li>Real-time <strong>trajectory optimization</strong> for <strong>autonomous racing</strong> using <strong>nonlinear optimal control</strong> in a C++/Python framework based on <strong>acados</strong>.</li>
-                            <li><strong>Adaptive discretization</strong> of OCPs based on a 3D track model and integration of a <strong>multi-stage anytime solver</strong>.</li>
-                            <li>OCP and vehicle-model extensions for <a href="https://www.mos.ed.tum.de/en/ftm/main-research/intelligent-vehicle-systems/tum-autonomous-motorsport/" target="_blank">TUM Autonomous Motorsport</a>.</li>
+                            <li>Real-time <strong>trajectory optimization</strong> for <strong>autonomous racing</strong> at <a href="https://www.mos.ed.tum.de/en/ftm/main-research/intelligent-vehicle-systems/tum-autonomous-motorsport/" target="_blank">TUM Autonomous Motorsport</a>, using <strong>nonlinear optimal control</strong> in a C++/Python framework based on <strong>acados</strong>.</li>
+                            <li><strong>Adaptive discretization</strong> of the optimal control problem based on a 3D track model.</li>
+                            <li>Integration of a <strong>multi-stage anytime solver</strong>.</li>
+                            <li>Optimal control problem and vehicle-model extensions.</li>
                         </ul>
                         <div class="card-tags">
                             <span class="card-tag">Trajectory Planning</span><span class="card-tag">NMPC</span>
@@ -1024,7 +1005,7 @@
                     <div class="c-card">
                         <div class="card-header">
                             <div class="card-logo">
-                                <svg viewBox="0 0 68 68" width="95%" height="95%" xmlns="http://www.w3.org/2000/svg">
+                                <svg role="img" aria-label="Ecurie Aix logo" viewBox="0 0 68 68" width="95%" height="95%" xmlns="http://www.w3.org/2000/svg">
                                     <defs><clipPath id="circle-clip"><circle cx="34" cy="34" r="33" /></clipPath></defs>
                                     <circle cx="34" cy="34" r="33" fill="none" stroke-width="1" />
                                     <image href="images/ecurie-aix.png" x="1" y="1" width="64" height="64" clip-path="url(#circle-clip)" preserveAspectRatio="xMidYMid meet" />
@@ -1038,20 +1019,23 @@
                         </div>
                         <div class="card-divider"></div>
                         <ul class="card-bullets">
-                            <li>Developed an <strong>Optimal Control</strong> <strong>Lap-Time simulation</strong> in <strong>MATLAB</strong> using <strong>CasADi</strong>, supporting vehicle setup and concept decisions.</li>
+                            <li>Developed <a href="#" data-modal="modal-project-1"><strong>OptiLTS</strong></a>, an <strong>Optimal Control</strong> <strong>Lap-Time simulation</strong> in <strong>MATLAB</strong> using <strong>CasADi</strong>, supporting vehicle setup and concept decisions.</li>
                             <li>Vehicle manufacturing, testing and track-side setup across the competition season.</li>
-                            <li>Contributed to <strong> 2nd place at the <i>FSG MathWorks Modeling &amp; Simulation Award 2025</i></strong>.</li>
+                            <li><strong>2nd place overall (EV) at FSG 2025</strong> and 2nd place in the <i>FSG MathWorks Modeling &amp; Simulation Award</i>.</li>
                         </ul>
                         <div class="card-tags">
                             <span class="card-tag">Optimal Control</span><span class="card-tag">Vehicle Dynamics</span>
                             <span class="card-tag">manufacturing</span><span class="card-tag">testing</span><span class="card-tag">setup</span>
+                        </div>
+                        <div class="card-more-info">
+                            <a href="#" class="more-info-link" data-modal="modal-ecurie">More Info →</a>
                         </div>
                     </div>
 
                     <div class="c-card">
                         <div class="card-header">
                             <div class="card-logo">
-                                <svg viewBox="0 0 68 68" width="95%" height="95%" xmlns="http://www.w3.org/2000/svg">
+                                <svg role="img" aria-label="Neba logo" viewBox="0 0 68 68" width="95%" height="95%" xmlns="http://www.w3.org/2000/svg">
                                     <defs><clipPath id="circle-clip-neba-1"><circle cx="34" cy="34" r="33" /></clipPath></defs>
                                     <circle cx="34" cy="34" r="33" fill="none" />
                                     <image href="images/neba.png" x="1" y="1" width="64" height="64" clip-path="url(#circle-clip-neba-1)" preserveAspectRatio="xMidYMid meet" />
@@ -1078,7 +1062,7 @@
                     <div class="c-card">
                         <div class="card-header">
                             <div class="card-logo">
-                                <svg viewBox="0 0 68 68" width="95%" height="95%" xmlns="http://www.w3.org/2000/svg">
+                                <svg role="img" aria-label="Neba logo" viewBox="0 0 68 68" width="95%" height="95%" xmlns="http://www.w3.org/2000/svg">
                                     <defs><clipPath id="circle-clip-neba-2"><circle cx="34" cy="34" r="33" /></clipPath></defs>
                                     <circle cx="34" cy="34" r="33" fill="none" />
                                     <image href="images/neba.png" x="1" y="1" width="64" height="64" clip-path="url(#circle-clip-neba-2)" preserveAspectRatio="xMidYMid meet" />
@@ -1104,7 +1088,7 @@
 
                 </div>
             </div>
-            <button class="carousel-arrow" id="exp-next">
+            <button class="carousel-arrow" id="exp-next" aria-label="Next experience">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
             </button>
         </div>
@@ -1123,8 +1107,8 @@
             <span class="page-num">02 /</span>
             <h2 class="page-title">Projects</h2>
         </div>
-        <div class="carousel-outer">
-            <button class="carousel-arrow" id="proj-prev">
+        <div class="carousel-outer" role="region" aria-roledescription="carousel" aria-label="Projects">
+            <button class="carousel-arrow" id="proj-prev" aria-label="Previous project">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
             </button>
             <div class="carousel-track-wrap">
@@ -1132,6 +1116,13 @@
 
                     <div class="c-card">
                         <div class="card-header">
+                            <div class="card-logo">
+                                <svg role="img" aria-label="Ecurie Aix logo" viewBox="0 0 68 68" width="95%" height="95%" xmlns="http://www.w3.org/2000/svg">
+                                    <defs><clipPath id="circle-clip-optilts"><circle cx="34" cy="34" r="33" /></clipPath></defs>
+                                    <circle cx="34" cy="34" r="33" fill="none" stroke-width="1" />
+                                    <image href="images/ecurie-aix.png" x="1" y="1" width="64" height="64" clip-path="url(#circle-clip-optilts)" preserveAspectRatio="xMidYMid meet" />
+                                </svg>
+                            </div>
                             <div>
                                 <div class="card-role">OptiLTS</div>
                                 <div class="card-org">Ecurie-Aix Formula Student Team</div>
@@ -1150,7 +1141,7 @@
 
                 </div>
             </div>
-            <button class="carousel-arrow" id="proj-next">
+            <button class="carousel-arrow" id="proj-next" aria-label="Next project">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
             </button>
         </div>
@@ -1169,8 +1160,8 @@
             <span class="page-num">03 /</span>
             <h2 class="page-title">Education</h2>
         </div>
-        <div class="carousel-outer">
-            <button class="carousel-arrow" id="edu-prev">
+        <div class="carousel-outer" role="region" aria-roledescription="carousel" aria-label="Education">
+            <button class="carousel-arrow" id="edu-prev" aria-label="Previous education">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
             </button>
             <div class="carousel-track-wrap">
@@ -1179,7 +1170,7 @@
                     <div class="c-card">
                         <div class="card-header">
                             <div class="card-logo">
-                                <svg viewBox="0 0 68 68" width="95%" height="95%" xmlns="http://www.w3.org/2000/svg">
+                                <svg role="img" aria-label="RWTH Aachen University logo" viewBox="0 0 68 68" width="95%" height="95%" xmlns="http://www.w3.org/2000/svg">
                                     <defs><clipPath id="circle-clip-rwth"><circle cx="34" cy="34" r="33" /></clipPath></defs>
                                     <circle cx="34" cy="34" r="33" fill="none" />
                                     <image href="images/rwth.png" x="1" y="1" width="64" height="64" clip-path="url(#circle-clip-rwth)" preserveAspectRatio="xMidYMid meet" />
@@ -1206,7 +1197,7 @@
                     <div class="c-card">
                         <div class="card-header">
                             <div class="card-logo">
-                                <svg viewBox="0 0 68 68" width="95%" height="95%" xmlns="http://www.w3.org/2000/svg">
+                                <svg role="img" aria-label="Politecnico di Milano logo" viewBox="0 0 68 68" width="95%" height="95%" xmlns="http://www.w3.org/2000/svg">
                                     <defs><clipPath id="circle-clip-polimi"><circle cx="34" cy="34" r="33" /></clipPath></defs>
                                     <circle cx="34" cy="34" r="33" fill="none" />
                                     <image href="images/politecnico.png" x="1" y="1" width="64" height="64" clip-path="url(#circle-clip-polimi)" preserveAspectRatio="xMidYMid meet" />
@@ -1232,7 +1223,7 @@
 
                 </div>
             </div>
-            <button class="carousel-arrow" id="edu-next">
+            <button class="carousel-arrow" id="edu-next" aria-label="Next education">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
             </button>
         </div>
@@ -1364,10 +1355,45 @@
         </div>
     </div>
 
+    <div class="modal-overlay" id="modal-ecurie">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <div class="card-header">
+                <div>
+                    <div class="card-role">Vehicle Dynamics Engineer</div>
+                    <div class="card-org">Ecurie-Aix Formula Student Team</div>
+                </div>
+            </div>
+            <p class="modal-description">
+                Formula Student 2025 season with RWTH Aachen's team, on the electric <strong>eax04</strong>.
+            </p>
+            <ul class="modal-bullets">
+                <li>Built <a href="#" data-modal="modal-project-1"><strong>OptiLTS</strong></a>, a <strong>lap-time simulation</strong> based on optimal control (MATLAB, CasADi), to guide car setup and design choices.</li>
+                <li>Helped <strong>build</strong>, <strong>test</strong> and <strong>set up</strong> the car at the track.</li>
+                <li><strong>2nd place overall</strong> in the EV class at FSG 2025.</li>
+                <li><strong>2nd place</strong> in the FSG MathWorks Modeling &amp; Simulation Award 2025.</li>
+            </ul>
+
+            <div class="modal-photo-strip">
+                <div class="modal-thumb" data-src="images/ecurie-fsa.jpg" title="The eax04 on track at Formula Student Austria (FSA) 2025"></div>
+                <div class="modal-thumb" data-src="images/ecurie-rollout.jpg" title="Rollout of the eax04"></div>
+                <div class="modal-thumb" data-src="images/ecurie-award.jpg" title="FSG 2025: 2nd place in the MathWorks Modeling &amp; Simulation Award"></div>
+            </div>
+            <div class="modal-tags">
+                <span class="card-tag">Vehicle Dynamics</span>
+                <span class="card-tag">Optimal Control</span>
+                <span class="card-tag">Manufacturing</span>
+                <span class="card-tag">Testing</span>
+                <span class="card-tag">Setup</span>
+            </div>
+        </div>
+    </div>
+
     <!-- ═══ LIGHTBOX ═══ -->
     <div class="lightbox-overlay" id="lightbox">
         <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
         <img class="lightbox-img" id="lightbox-img" src="" alt="Project screenshot enlarged" />
+        <p class="lightbox-caption" id="lightbox-caption"></p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -1394,11 +1420,15 @@
                 return cards[0].offsetWidth + parseFloat(s.marginLeft) + parseFloat(s.marginRight);
             }
 
-            function render() {
-                const wrap = track.parentElement;
+            const wrap = track.parentElement;
+
+            function offset() {
                 const cw = cardW();
-                const offset = (wrap.offsetWidth - cw) / 2 - cur * cw;
-                track.style.transform = `translateX(${offset}px)`;
+                return (wrap.offsetWidth - cw) / 2 - cur * cw;
+            }
+
+            function render() {
+                track.style.transform = `translateX(${offset()}px)`;
 
                 cards.forEach((c, i) => {
                     c.classList.remove('active', 'side', 'far');
@@ -1419,16 +1449,45 @@
             next.addEventListener('click', () => go(cur + 1));
             cards.forEach((c, i) => c.addEventListener('click', () => { if (i !== cur) go(i); }));
 
+            // drag / swipe
+            let startX = null, dx = 0;
+            wrap.addEventListener('pointerdown', e => {
+                if (e.button !== 0) return;
+                startX = e.clientX;
+                dx = 0;
+                track.style.transition = 'none';
+            });
+            window.addEventListener('pointermove', e => {
+                if (startX === null) return;
+                dx = e.clientX - startX;
+                track.style.transform = `translateX(${offset() + dx}px)`;
+            });
+            function endDrag() {
+                if (startX === null) return;
+                startX = null;
+                track.style.transition = '';
+                if (Math.abs(dx) > 50) go(cur + (dx < 0 ? 1 : -1));
+                else render();
+            }
+            window.addEventListener('pointerup', endDrag);
+            window.addEventListener('pointercancel', endDrag);
+            wrap.addEventListener('dragstart', e => e.preventDefault());
+            // a drag must not also count as a click on "More Info" / links
+            wrap.addEventListener('click', e => {
+                if (Math.abs(dx) > 5) { e.preventDefault(); e.stopPropagation(); }
+            }, true);
+
             render();
             window.addEventListener('resize', render);
         }
 
         // ═══ MODALS ═══
-        document.querySelectorAll('.more-info-link').forEach(link => {
+        document.querySelectorAll('[data-modal]').forEach(link => {
             link.addEventListener('click', e => {
                 e.preventDefault();
                 const modal = document.getElementById(link.getAttribute('data-modal'));
                 if (!modal) return;
+                document.querySelectorAll('.modal-overlay.active').forEach(closeModal);
                 modal.classList.add('active');
                 document.body.style.overflow = 'hidden';
                 renderMathInElement(modal, {
@@ -1437,7 +1496,32 @@
                         { left: '$', right: '$', display: false }
                     ]
                 });
+                modal.querySelector('.modal-content').updateScroll();
             });
+        });
+
+        // ═══ MODAL SCROLL INDICATOR ═══
+        document.querySelectorAll('.modal-content').forEach(box => {
+            const track = document.createElement('div');
+            const thumb = document.createElement('div');
+            track.className = 'scroll-track';
+            thumb.className = 'scroll-thumb';
+            track.appendChild(thumb);
+            box.appendChild(track);
+
+            box.updateScroll = () => {
+                const h = box.clientHeight, max = box.scrollHeight - h;
+                track.style.display = max > 0 ? '' : 'none';
+                if (max <= 0) return;
+                const len = h / 2;                                   // track spans the middle half
+                const thumbLen = Math.max(len * h / box.scrollHeight, 24);
+                track.style.top = (box.scrollTop + h / 4) + 'px';    // box scrolls, so follow scrollTop
+                track.style.height = len + 'px';
+                thumb.style.height = thumbLen + 'px';
+                thumb.style.top = (box.scrollTop / max) * (len - thumbLen) + 'px';
+            };
+            box.addEventListener('scroll', box.updateScroll);
+            window.addEventListener('resize', box.updateScroll);
         });
 
         function closeModal(overlay) {
@@ -1457,8 +1541,10 @@
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
 
-        function openLightbox(src) {
+        function openLightbox(src, caption) {
             lightboxImg.src = src;
+            lightboxImg.alt = caption || 'Project screenshot enlarged';
+            document.getElementById('lightbox-caption').textContent = caption || '';
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -1470,18 +1556,16 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // Attach click to thumbnails — works for both img-loaded and placeholder states
+        // Attach click to thumbnails
         document.querySelectorAll('.modal-thumb').forEach(thumb => {
-            // Try to load the actual image; hide placeholder if successful
+            // Load the thumbnail image
             const src = thumb.getAttribute('data-src');
             if (src) {
                 const img = new Image();
                 img.onload = () => {
-                    const placeholder = thumb.querySelector('.thumb-placeholder');
-                    if (placeholder) placeholder.style.display = 'none';
                     const el = document.createElement('img');
                     el.src = src;
-                    el.alt = 'Project screenshot';
+                    el.alt = thumb.title || 'Project screenshot';
                     thumb.appendChild(el);
                 };
                 img.src = src;
@@ -1489,7 +1573,7 @@
 
             thumb.addEventListener('click', () => {
                 const imgSrc = thumb.getAttribute('data-src');
-                if (imgSrc) openLightbox(imgSrc);
+                if (imgSrc) openLightbox(imgSrc, thumb.title);
             });
         });
 
