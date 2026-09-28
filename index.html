@@ -921,6 +921,81 @@
                 padding-left: 0.5rem;
             }
         }
+
+        /* ===== PHONE ONLY — nothing here reaches screens wider than 600px ===== */
+        @media (max-width: 600px) {
+            /* free scrolling: mandatory snapping fights sections taller than the screen */
+            html {
+                scroll-snap-type: y proximity;
+            }
+
+            /* nav: all five links fit without clipping */
+            nav {
+                justify-content: center;
+                padding: 1rem 0.75rem;
+            }
+
+            .nav-links {
+                gap: 0.9rem;
+            }
+
+                .nav-links a {
+                    letter-spacing: 0.06em;
+                }
+
+            /* carousels: swipe + dots instead of arrows, wider cards that grow with content */
+            .carousel-arrow {
+                display: none;
+            }
+
+            .carousel-outer {
+                min-height: 0;
+            }
+
+            .c-card {
+                width: 84vw;
+                aspect-ratio: auto;
+                margin: 0 0.5rem;
+                padding: 1.4rem;
+                border-radius: 1.5rem;
+            }
+
+            .card-logo {
+                width: 64px;
+            }
+
+            .card-header {
+                gap: 0.9rem;
+                margin-bottom: 1rem;
+            }
+
+            .card-period {
+                letter-spacing: 0.08em;
+            }
+
+            .card-divider {
+                margin: 1rem auto;
+            }
+
+            .card-more-info {
+                margin-top: 1.2rem;
+                padding-top: 1rem;
+            }
+
+            /* modals: a bit more room for text */
+            .modal-content {
+                width: 94%;
+                padding: 1.8rem 1.4rem;
+            }
+
+            .modal-bullets {
+                padding-left: 0;
+            }
+
+            .modal-photo-strip {
+                gap: 0.5rem;
+            }
+        }
     </style>
 </head>
 <body>
