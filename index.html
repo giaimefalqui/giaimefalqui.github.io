@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Giaime Falqui — Automotive Engineer</title>
+    <meta name="description" content="Giaime Falqui — Mechanical and Automotive Engineer. M.Sc. at RWTH Aachen, Master's thesis at TUM on real-time trajectory planning for autonomous racing." />
+    <meta property="og:title" content="Giaime Falqui — Automotive Engineer" />
+    <meta property="og:description" content="Vehicle dynamics, optimal control and mechanical design. Open to full-time roles from January 2027." />
+    <meta property="og:image" content="https://giaimefalqui.github.io/images/profile.jpg" />
+    <meta property="og:url" content="https://giaimefalqui.github.io/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -391,6 +396,10 @@
                 .card-bullets li strong {
                     color: var(--text);
                     font-weight: 400;
+                }
+
+                .card-bullets a {
+                    color: var(--accent-dark);
                 }
 
         .card-tags {
@@ -949,7 +958,7 @@
     <!-- ═══ HERO ═══ -->
     <section class="page" id="hero">
         <div class="hero-photo fade-up fd1">
-            <img src="images/profile.jpg">
+            <img src="images/profile.jpg" alt="Giaime Falqui">
         </div>
         <div class="hero-name fade-up fd2">Giaime Falqui</div>
         <p class="hero-title fade-up fd3">
@@ -958,12 +967,11 @@
         </p>
         <div class="hero-divider fade-up fd3"></div>
         <p class="hero-bio fade-up fd4">
-            <strong>M.Sc. student at RWTH Aachen University</strong>, B.Sc. in Mechanical Engineering
-            from Politecnico di Milano. Specialized in <strong>vehicle dynamics simulation</strong>,
-            CAE analysis, and mechanical design — with hands-on experience from Formula Student
-            competition and industrial internships.
-            <strong>Currently seeking a Master's thesis</strong> in a technically demanding
-            engineering environment.
+            <strong>Automotive Engineering M.Sc. student at RWTH Aachen University</strong>, B.Sc. in Mechanical Engineering
+            from Politecnico di Milano. Currently completing my <strong>Master's thesis at the TUM Autonomous Vehicle Systems Lab</strong>
+            on real-time trajectory planning for autonomous racing. Formula Student experience combining
+            <strong>optimal-control lap-time simulation</strong> with hands-on manufacturing, testing and setup.
+            <strong>Open to full-time roles from January 2027.</strong>
         </p>
         <div class="scroll-hint">
             <span>Scroll</span>
@@ -990,6 +998,33 @@
                         <div class="card-header">
                             <div class="card-logo">
                                 <svg viewBox="0 0 68 68" width="95%" height="95%" xmlns="http://www.w3.org/2000/svg">
+                                    <defs><clipPath id="circle-clip-tum"><circle cx="34" cy="34" r="33" /></clipPath></defs>
+                                    <circle cx="34" cy="34" r="33" fill="none" />
+                                    <image href="images/tum.png" x="10" y="10" width="48" height="48" clip-path="url(#circle-clip-tum)" preserveAspectRatio="xMidYMid meet" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="card-period">Jul 2026 - Present<br /> Munich, Germany</div>
+                                <div class="card-role">Master's Thesis Researcher</div>
+                                <div class="card-org">TUM Autonomous Vehicle Systems Lab</div>
+                            </div>
+                        </div>
+                        <div class="card-divider"></div>
+                        <ul class="card-bullets">
+                            <li>Real-time <strong>trajectory optimization</strong> for <strong>autonomous racing</strong> using <strong>nonlinear optimal control</strong> in a C++/Python framework based on <strong>acados</strong>.</li>
+                            <li><strong>Adaptive discretization</strong> of OCPs based on a 3D track model and integration of a <strong>multi-stage anytime solver</strong>.</li>
+                            <li>OCP and vehicle-model extensions for <a href="https://www.mos.ed.tum.de/en/ftm/main-research/intelligent-vehicle-systems/tum-autonomous-motorsport/" target="_blank">TUM Autonomous Motorsport</a>.</li>
+                        </ul>
+                        <div class="card-tags">
+                            <span class="card-tag">Trajectory Planning</span><span class="card-tag">NMPC</span>
+                            <span class="card-tag">acados</span><span class="card-tag">C++</span><span class="card-tag">Python</span>
+                        </div>
+                    </div>
+
+                    <div class="c-card">
+                        <div class="card-header">
+                            <div class="card-logo">
+                                <svg viewBox="0 0 68 68" width="95%" height="95%" xmlns="http://www.w3.org/2000/svg">
                                     <defs><clipPath id="circle-clip"><circle cx="34" cy="34" r="33" /></clipPath></defs>
                                     <circle cx="34" cy="34" r="33" fill="none" stroke-width="1" />
                                     <image href="images/ecurie-aix.png" x="1" y="1" width="64" height="64" clip-path="url(#circle-clip)" preserveAspectRatio="xMidYMid meet" />
@@ -1003,8 +1038,8 @@
                         </div>
                         <div class="card-divider"></div>
                         <ul class="card-bullets">
-                            <li>Developed an <strong>Optimal Control</strong> model for <strong>Lap-Time simulation</strong> using <strong>CasADi</strong>'s framework in <strong>MATLAB</strong>.</li>
-                            <li>Vehicle manufacturing, testing and setup.</li>
+                            <li>Developed an <strong>Optimal Control</strong> <strong>Lap-Time simulation</strong> in <strong>MATLAB</strong> using <strong>CasADi</strong>, supporting vehicle setup and concept decisions.</li>
+                            <li>Vehicle manufacturing, testing and track-side setup across the competition season.</li>
                             <li>Contributed to <strong> 2nd place at the <i>FSG MathWorks Modeling &amp; Simulation Award 2025</i></strong>.</li>
                         </ul>
                         <div class="card-tags">
@@ -1024,7 +1059,7 @@
                             </div>
                             <div>
                                 <div class="card-period">Sep 2023 - Dec 2023<br />Brescia, Italy</div>
-                                <div class="card-role">Mechanical Engineer Intern</div>
+                                <div class="card-role">Project Engineer Intern</div>
                                 <div class="card-org">Neba Srl</div>
                             </div>
                         </div>
@@ -1051,7 +1086,7 @@
                             </div>
                             <div>
                                 <div class="card-period">Mar 2023 - Jun 2023<br />Brescia, Italy</div>
-                                <div class="card-role">Mechanical Engineer Intern</div>
+                                <div class="card-role">Project Engineer Intern</div>
                                 <div class="card-org">Neba Srl</div>
                             </div>
                         </div>
@@ -1113,25 +1148,6 @@
                         </div>
                     </div>
 
-                    <div class="c-card">
-                        <div class="card-header">
-                            <div>
-                                <div class="card-period">Project Timeline</div>
-                                <div class="card-role">Project Title</div>
-                                <div class="card-org">Your Organization</div>
-                            </div>
-                        </div>
-                        <div class="card-divider"></div>
-                        <ul class="card-bullets">
-                            <li>Project description and key responsibilities.</li>
-                            <li>Technical achievements and contributions.</li>
-                            <li>Results, learnings, or awards received.</li>
-                        </ul>
-                        <div class="card-more-info">
-                            <a href="#" class="more-info-link" data-modal="modal-project-2">More Info →</a>
-                        </div>
-                    </div>
-
                 </div>
             </div>
             <button class="carousel-arrow" id="proj-next">
@@ -1178,7 +1194,7 @@
                         <div class="card-divider"></div>
                         <ul class="card-bullets">
                             <li>Current CGPA: 2.3</li>
-                            <li><strong>Dean's List 2025</strong>, <strong>top 5%</strong> of the M.Sc. program.</li>
+                            <li><a href="https://www.rwth-aachen.de/cms/root/studium/lehre/exzellente-lehre/~dhky/dean-s-list/?lidx=1" target="_blank"><strong>Dean's List 2025</strong></a>, <strong>top 5%</strong> of the M.Sc. program.</li>
                             <li>Focus areas: electrification, battery storage systems, vehicle structural design.</li>
                         </ul>
                         <div class="card-tags">
@@ -1236,24 +1252,35 @@
                 <h3 class="section-heading">Skills &amp; Tools</h3>
                 <div class="skills-cats">
                     <div>
-                        <div class="skill-cat-name">Programming &amp; Simulation</div>
+                        <div class="skill-cat-name">Programming</div>
                         <div class="skill-list">
-                            <span class="skill-pill">MATLAB</span><span class="skill-pill">CasADi</span>
-                            <span class="skill-pill">C++</span><span class="skill-pill">GitHub</span>
+                            <span class="skill-pill">MATLAB</span><span class="skill-pill">Python</span>
+                            <span class="skill-pill">C++</span><span class="skill-pill">CasADi</span>
+                            <span class="skill-pill">acados</span>
                         </div>
                     </div>
                     <div>
-                        <div class="skill-cat-name">CAD Modeling</div>
+                        <div class="skill-cat-name">Methods</div>
+                        <div class="skill-list">
+                            <span class="skill-pill">Optimal Control</span><span class="skill-pill">NMPC</span>
+                            <span class="skill-pill">FEM</span><span class="skill-pill">GD&amp;T</span>
+                            <span class="skill-pill">3D Printing</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="skill-cat-name">Tools</div>
+                        <div class="skill-list">
+                            <span class="skill-pill">GitLab</span><span class="skill-pill">GitHub</span>
+                            <span class="skill-pill">Docker</span><span class="skill-pill">ROS 2</span>
+                            <span class="skill-pill">LaTeX</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="skill-cat-name">CAD / CAE</div>
                         <div class="skill-list">
                             <span class="skill-pill">SolidWorks</span><span class="skill-pill">Inventor</span>
                             <span class="skill-pill">Fusion 360</span><span class="skill-pill">SolidEdge</span>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="skill-cat-name">CAE &amp; Structural Analysis</div>
-                        <div class="skill-list">
-                            <span class="skill-pill">Ansys Mechanical</span><span class="skill-pill">FEM Analysis</span>
-                            <span class="skill-pill">3D Printing</span>
+                            <span class="skill-pill">Ansys Mechanical</span>
                         </div>
                     </div>
                     <div>
@@ -1269,8 +1296,8 @@
             <div>
                 <h3 class="section-heading">Get in Touch</h3>
                 <p class="contact-text">
-                    I'm actively seeking a <strong style="color:var(--text);font-weight:400">Master's thesis position</strong>
-                    in a competitive and technically challenging engineering environment. Feel free to reach out.
+                    I'm looking for <strong style="color:var(--text);font-weight:400">full-time roles starting January 2027</strong>
+                    in vehicle dynamics, control and mechanical engineering. Feel free to reach out.
                 </p>
                 <div class="contact-links">
                     <a href="mailto:giaimefalqui@gmail.com" class="contact-link">
@@ -1288,8 +1315,8 @@
                     </a>
                 </div>
                 <footer>
-                    <span>© 2025 Giaime Falqui</span>
-                    <span>Automotive Engineer · Aachen, DE</span>
+                    <span>© 2026 Giaime Falqui</span>
+                    <span>Automotive Engineer · Munich, DE</span>
                 </footer>
             </div>
         </div>
@@ -1317,8 +1344,10 @@
                     </div></li>
                 <li>Integration of <strong>vehicle dynamics</strong> model with <strong>tire friction constraints</strong>.</li>
                 <li>Development of efficient <strong>numerical solver</strong> using <strong>CasADi</strong> framework in <strong>MATLAB</strong>.</li>
-                <li><strong>Interactive GUI</strong> for setup, simulation, and results analysis.
-            
+                <li>Used to support <strong>vehicle setup</strong> and <strong>concept decisions</strong>.</li>
+                <li><strong>Interactive GUI</strong> for setup, simulation, and results analysis.</li>
+            </ul>
+
             <!-- GUI screenshots -->
             <div class="modal-photo-strip">
                 <div class="modal-thumb" data-src="images/optilts-gui-1.jpg"></div>
@@ -1331,31 +1360,6 @@
                 <span class="card-tag">CasADi</span>
                 <span class="card-tag">MATLAB</span>
                 <span class="card-tag">Simulation</span>
-            </div></li>  
-            </ul>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="modal-project-2">
-        <div class="modal-content">
-            <button class="modal-close" aria-label="Close modal">&times;</button>
-            <h3 class="modal-title">Project Title</h3>
-            <p class="modal-subtitle">Your Organization</p>
-            <p class="modal-description">
-                Add detailed project description here. This modal provides an expanded view of your project with comprehensive information about your role, technical achievements, and outcomes.
-            </p>
-            <ul class="modal-bullets">
-                <li>Point 1</li>
-                <li>Point 2</li>
-                <li>Point 3</li>
-            </ul>
-            <p class="modal-description">
-                <strong>Results:</strong> Describe the measurable outcomes and impact of this project.
-            </p>
-            <div class="modal-tags">
-                <span class="card-tag">Tag 1</span>
-                <span class="card-tag">Tag 2</span>
-                <span class="card-tag">Tag 3</span>
             </div>
         </div>
     </div>
